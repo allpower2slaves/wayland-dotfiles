@@ -1,0 +1,17 @@
+#!/bin/sh
+
+dwlb -font "Source Code Pro:size=10:antialias=true:style=Medium:hintstyle=3:rgba=none" <&0 &
+
+/usr/libexec/xdg-desktop-portal-wlr || true &
+/usr/libexec/xdg-desktop-portal-gtk || true &
+/usr/libexec/xdg-desktop-portal || true &
+
+pipewire || true &
+swaybg --output '*' --mode fill --image "$DWL_BACKGROUND" || true &
+
+(
+command -v systemctl && \
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway \ 
+|| \
+exec dbus-update-environment WAYLAND_DISPLAY
+) &

@@ -1,0 +1,57 @@
+#!/bin/sh
+set -x
+
+command -v grim || exit 1
+command -v slurp || exit 1
+
+scr_date_command="date +'%m-%d-%Y-%H%M%S'"
+scr_prefix="screenshot"
+scr_output_format="png"
+scr_directory="$HOME/Pictures/Screenshots"
+
+mkdir -p "$scr_directory" || exit 1
+
+main(){
+	while :; do
+		case $1 in
+		-f | --fullscreen)
+			scr_fullscreen
+			break
+			;;
+		-w | --window)
+			scr_window
+			break
+			;;
+		-a | --area)
+			scr_area
+			break
+			;;
+		--)
+			break;;
+		-*)
+			exit 1;;
+		*)
+			scr_area
+			break
+			;;
+		esac
+	done
+}
+
+generate_path(){
+	printf "%s" ""$scr_directory"/"$scr_prefix"-"$(eval "$scr_date_command")"."$scr_output_format""
+}
+
+scr_fullscreen() {
+	grim - | tee "$(generate_path)" | wl-copy
+}
+
+scr_window(){
+	exit 1
+}
+
+scr_area(){
+	grim -g "$(slurp -o)" - | tee "$(generate_path)" | wl-copy
+}
+
+main "$@"
