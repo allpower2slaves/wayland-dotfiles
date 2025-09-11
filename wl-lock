@@ -1,0 +1,5 @@
+#!/bin/sh
+
+${DWL_LOCK_BACKGROUND:="/dev/null"}
+
+exec swaylock -f -k --font 'Source Code Pro' -i "$DWL_LOCK_BACKGROUND"

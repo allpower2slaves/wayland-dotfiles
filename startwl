@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export DWL_LOCK_BACKGROUND="$DWL_BACKGROUND"
+
 export XDG_CURRENT_DESKTOP=wlroots
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=wlroots
