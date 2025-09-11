@@ -10,6 +10,12 @@ pipewire || true &
 wireplumber || true &
 swaybg --output '*' --mode fill --image "$DWL_BACKGROUND" || true &
 
+swayidle -w \
+	timeout 120 "swaylock -f" \
+	timeout 240 "wlopm --off '*'" \
+	resume "wlopm --on '*'" \
+	&
+
 (
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway \
 || \
