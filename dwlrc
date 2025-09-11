@@ -7,6 +7,7 @@ dwlb -font "Source Code Pro:size=10:antialias=true:style=Medium:hintstyle=3:rgba
 /usr/libexec/xdg-desktop-portal || true &
 
 pipewire || true &
+wireplumber || true &
 swaybg --output '*' --mode fill --image "$DWL_BACKGROUND" || true &
 
 (
