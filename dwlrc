@@ -11,8 +11,7 @@ wireplumber || true &
 swaybg --output '*' --mode fill --image "$DWL_BACKGROUND" || true &
 
 (
-command -v systemctl && \
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway \ 
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway \
 || \
-exec dbus-update-environment WAYLAND_DISPLAY
+dbus-update-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 ) &
