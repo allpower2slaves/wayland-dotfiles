@@ -4,4 +4,8 @@ export XDG_CURRENT_DESKTOP=wlroots
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=wlroots
 
-dbus-run-session dwl -s dwlrc
+printf "xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal wireplumber pipewire\n" | tr ' ' '\n' | while read __file; do
+	killall $__file
+done
+
+dbus-launch dwl -d -s dwlrc
