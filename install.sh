@@ -1,5 +1,5 @@
 #!/bin/sh
-__target=""$HOME"/"$(printf "$PATH" | grep -o '\.local/bin' || printf 'bin')""
+__target=""$HOME"/"$(printf "$PATH" | grep -q '\.local/bin' && printf ".local/bin" || printf 'bin')""
 __repo="$(realpath "$(dirname "$0")")"
 
 printf "$__target\n" 1>&2 # debug
