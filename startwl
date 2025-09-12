@@ -10,4 +10,4 @@ printf "xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal wireplu
 	killall $__file
 done
 
-dbus-launch dwl -d -s dwlrc
+dbus-launch dwl -s dwlrc
