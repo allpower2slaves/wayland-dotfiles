@@ -11,6 +11,6 @@ printf "wl-lock wl-screenshot dwlrc startwl\n" | tr ' ' '\n' | while read __file
 	ln -svif ""$__repo"/"$__file"" ""$__target"/"$__file""
 done
 
-printf "foot xdg-desktop-portal\n" | tr ' ' '\n' | while read __dir; do
+printf "foot fuzzel xdg-desktop-portal\n" | tr ' ' '\n' | while read __dir; do
 	ln -svif ""$__repo"/"$__dir"" ""$__configdir"/"$__dir""
 done
